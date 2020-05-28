@@ -1,6 +1,6 @@
 # groceries.py
 
-#from pprint import pprint
+# from pprint import pprint
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -25,15 +25,20 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print(products)
-# pprint(products)
+# print(products)
+
 
 products_count = len(products)
 
-print("______________")
+print("--------------")
 print("THERE ARE " + str(products_count) + " PRODUCTS:")
-print("______________")
+print("--------------")
 
-for p in products:
+def sort_by_name(any_product):
+    return any_product["name"]
+
+sorted_products = sorted(products, key=sort_by_name)
+
+for p in sorted_products:
     price_usd = "${0:.2f}".format(p["price"])
     print(" ... " + p["name"] + " (" + str(price_usd) + ")")
